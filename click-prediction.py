@@ -35,3 +35,14 @@ sns.barplot(sizes_test.index, sizes_test.values, alpha=0.6, color=p[1], label='t
 plt.legend()
 plt.xlabel('Number of Ads in display', fontsize=12)
 plt.ylabel('Proportion of set', fontsize=12)
+
+ad_usage_train = df_train.groupby('ad_id')['ad_id'].count()
+
+for i in [2, 10, 50, 100, 1000]:
+    print('Ads that appear less than {} times: {}%'.format(i, round((ad_usage_train < i).mean() * 100, 2)))
+
+plt.figure(figsize=(12, 6))
+plt.hist(ad_usage_train.values, bins=50, log=True)
+plt.xlabel('Number of times ad appeared', fontsize=12)
+plt.ylabel('log(Count of displays with ad)', fontsize=12)
+plt.show()
