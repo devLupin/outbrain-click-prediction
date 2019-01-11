@@ -15,12 +15,7 @@ import seaborn as sns
 
 p = sns.color_palette()
 
-print('# File sizes')
-for f in os.listdir('../input'):
-    if 'zip' not in f:
-        print(f.ljust(30) + str(round(os.path.getsize('../input/' + f) / 1000000, 2)) + 'MB')
 
-        
 df_train = pd.read_csv('../input/clicks_train.csv')
 df_test = pd.read_csv('../input/clicks_test.csv')
 
@@ -46,3 +41,6 @@ plt.hist(ad_usage_train.values, bins=50, log=True)
 plt.xlabel('Number of times ad appeared', fontsize=12)
 plt.ylabel('log(Count of displays with ad)', fontsize=12)
 plt.show()
+
+ad_prop = len(set(df_test.ad_id.unique()).intersection(df_train.ad_id.unique())) / len(df_test.ad_id.unique())
+print('Proportion of test ads in test that are in training: {}%'.format(round(ad_prop * 100, 2)))
