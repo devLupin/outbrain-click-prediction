@@ -15,7 +15,12 @@ import seaborn as sns
 
 p = sns.color_palette()
 
+print('# File sizes')
+for f in os.listdir('../input'):
+    if 'zip' not in f:
+        print(f.ljust(30) + str(round(os.path.getsize('../input/' + f) / 1000000, 2)) + 'MB')
 
+        
 df_train = pd.read_csv('../input/clicks_train.csv')
 df_test = pd.read_csv('../input/clicks_test.csv')
 
@@ -44,3 +49,11 @@ plt.show()
 
 ad_prop = len(set(df_test.ad_id.unique()).intersection(df_train.ad_id.unique())) / len(df_test.ad_id.unique())
 print('Proportion of test ads in test that are in training: {}%'.format(round(ad_prop * 100, 2)))
+
+try:del df_train,df_test # Being nice to Azure
+except:pass;gc.collect()
+
+events = pd.read_csv('../input/events.csv')
+print('Shape:', events.shape)
+print('Columns', events.columns.tolist())
+events.head()
