@@ -85,3 +85,24 @@ plt.hist(uuid_counts.values, bins=50, log=True)
 plt.xlabel('Number of times user appeared in set', fontsize=12)
 plt.ylabel('log(Count of users)', fontsize=12)
 plt.show()
+
+try:del events
+except:pass;gc.collect()
+
+topics = pd.read_csv('../input/documents_topics.csv')
+print('Columns:',topics.columns.tolist())
+print('Number of unique topics:', len(topics.topic_id.unique()))
+
+topics.head()
+
+topic_ids = topics.groupby('topic_id')['confidence_level'].count().sort_values()
+
+for i in [10000, 50000, 100000, 200000]:
+    print('Number of topics that appear more than {} times: {}'
+          .format(i, (topic_ids > i).sum()))
+
+plt.figure(figsize=(12, 4))
+sns.barplot(topic_ids.index, topic_ids.values, order=topic_ids.index, alpha=1, color=p[5])
+plt.xlabel('Document Topics', fontsize=12)
+plt.ylabel('Total occurences', fontsize=12)
+plt.show()
