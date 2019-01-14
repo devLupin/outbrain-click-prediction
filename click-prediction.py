@@ -56,4 +56,11 @@ except:pass;gc.collect()
 events = pd.read_csv('../input/events.csv')
 print('Shape:', events.shape)
 print('Columns', events.columns.tolist())
+print('\n\n')
 events.head()
+
+
+plat = events.platform.value_counts()
+
+print(plat)
+print('\nUnique values of platform:', events.platform.unique())
