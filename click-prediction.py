@@ -72,3 +72,16 @@ plt.figure(figsize=(12,4))
 sns.barplot(plat.index, plat.values, alpha=0.8, color=p[2])
 plt.xlabel('Platform', fontsize=12)
 plt.ylabel('Occurence count', fontsize=12)
+
+uuid_counts = events.groupby('uuid')['uuid'].count().sort_values()
+
+print(uuid_counts.tail())
+
+for i in [2, 5, 10]:
+    print('Users that appear less than {} times: {}%'.format(i, round((uuid_counts < i).mean() * 100, 2)))
+    
+plt.figure(figsize=(12, 4))
+plt.hist(uuid_counts.values, bins=50, log=True)
+plt.xlabel('Number of times user appeared in set', fontsize=12)
+plt.ylabel('log(Count of users)', fontsize=12)
+plt.show()
