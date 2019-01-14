@@ -64,3 +64,11 @@ plat = events.platform.value_counts()
 
 print(plat)
 print('\nUnique values of platform:', events.platform.unique())
+
+events.platform = events.platform.astype(str)
+plat = events.platform.value_counts()
+
+plt.figure(figsize=(12,4))
+sns.barplot(plat.index, plat.values, alpha=0.8, color=p[2])
+plt.xlabel('Platform', fontsize=12)
+plt.ylabel('Occurence count', fontsize=12)
