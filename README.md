@@ -1,6 +1,8 @@
 # Outbrain-Click-Prediction
 <hr>
 
+✨ Can you predict which recommended content each user will click?
+
 **Author** : Hyuntaek Lim, luckyquit49@gmail.com
 
 Supervisor : Na, In Seop, ypencil@hanmail.net
@@ -71,13 +73,20 @@ Outbrain-Click-Predcition Github : https://github.com/bajajsweta/Outbrain-Click-
 #  Installation
 <hr>
 
-- **Library For Windows**
+- **Python library For Windows**
     ```
-    $ pip install [name] or
-    $ pip3 install [name]
+    pip install [lib_name] or
+    pip3 install [lib_name]
+    ```
+- **[Using Outbrain-Click-Prediction Algorithm](https://github.com/bajajsweta/Outbrain-Click-Prediction) for Windows**
+    ```
+    https://github.com/bajajsweta/Outbrain-Click-Prediction.git
     ```
 
 - **[Outbrain Click Prediction Data Sources](https://www.kaggle.com/c/outbrain-click-prediction/data) for Windows**
+    ```
+    kaggle competitions download -c outbrain-click-prediction
+    ```
 
 
 
