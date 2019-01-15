@@ -106,3 +106,19 @@ sns.barplot(topic_ids.index, topic_ids.values, order=topic_ids.index, alpha=1, c
 plt.xlabel('Document Topics', fontsize=12)
 plt.ylabel('Total occurences', fontsize=12)
 plt.show()
+
+cat = pd.read_csv('../input/documents_categories.csv')
+print('Columns:', cat.columns.tolist())
+print('Number of unique categories:', len(cat.category_id.unique()))
+
+cat_ids = cat.groupby('category_id')['confidence_level'].count().sort_values()
+
+for i in [1000, 10000, 50000, 100000]:
+    print('Number of categories that appear more than {} times: {}'
+          .format(i, (cat_ids > i).sum()))
+
+plt.figure(figsize=(12, 4))
+sns.barplot(cat_ids.index, cat_ids.values, order=cat_ids.index, alpha=1, color=p[3])
+plt.xlabel('Document Categories', fontsize=12)
+plt.ylabel('Total occurences', fontsize=12)
+plt.show()
