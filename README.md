@@ -1,110 +1,85 @@
 # Outbrain-Click-Prediction
 <hr>
 
-![screen shot 2017-04-28 at 11 06 49 pm](https://cloud.githubusercontent.com/assets/21116708/25552417/6fe17abc-2c67-11e7-8e0a-5714286a572f.png)
+**Author** : Hyuntaek Lim, luckyquit49@gmail.com
+Supervisor : Na, In Seop, ypencil@hanmail.net
+Starting Project : 2019.1.8
 
-# Deliverables
+
+
+# Project summary
 <hr>
 
-Project Proposal Video : https://www.youtube.com/watch?v=IeKPIaOxPJI
-
-RShiny Deployed Link: https://outbrainproject.shinyapps.io/WebOutBrain/
-
-Tableau Online link: https://us-east-1.online.tableau.com/#/site/ads_outbrain_finalproject/workbooks
-(Note:  since data file was big tableau server was used. Please use your credentials to login in view the dashboard)
-
-Final Report document: ADS_Final_Project_Report_Team8.docx
-
-DockerHub Link : : https://hub.docker.com/r/sweta/outbrain_prediction/
-
-Project Demo Link: https://www.youtube.com/watch?v=19ihFCw8RIM
-
-Final Presentation Link :ADS_Final_Project_Team8.pptx
-
-Tools used: R, R-shiny for web devolpment, Python, Plotly and Tableau for analysis, Docker, IBM Data Science, Microsoft Azure, AWS
-
-# Note
-In Exploratory analysis we have used plotly in offline mode, hence the graph will not be visible unless the code is run.
-The Report has all the graph images along with the explanation.
+Outbrain Click Prediction Overview : https://www.kaggle.com/c/outbrain-click-prediction
+Outbrain-Click-Predcition Github : https://github.com/bajajsweta/Outbrain-Click-Prediction
 
 
-## PROBLEM STATEMENT:
+
+# Data Sources file descriptions
 <hr>
 
-Millions of user use social network for surfing, visiting countless websites and clicking on countless ads/recommendations  on these website.
-Knowing what the users are interested in and what the users are using in real world would be of great significance for future recommendations used by marketing team to attract potential users
-as well as ad placements and real time bidding
-Predicting the likelihood of users clicking on a particular content
-Ranking the recommendations in each group by decreasing predicted likelihood of being clicked
+**page_views.csv** is a the log of users visiting documents. To save disk space, the timestamps in the entire dataset are relative to the first time in the dataset. If you wish to recover the actual epoch time of the visit, add 1465876799998 to the timestamp.
 
-We have made Kaggle submission of random forest model. The model is evaluated as shown in the image below
+- uuid
+- document_id
+- timestamp (ms since 1970-01-01 - 1465876799998)
+- platform (desktop = 1, mobile = 2, tablet =3)
+- geo_location (country>state>DMA)
+- traffic_source (internal = 1, search = 2, social = 3)
 
-![screen shot 2017-04-28 at 11 31 33 pm](https://cloud.githubusercontent.com/assets/21116708/25552615/cc285f02-2c6c-11e7-8e04-fde3d97d6ec5.png)
+**clicks_train.csv** is the training set, showing which of a set of ads was clicked.
 
-and below is the model evaulation
+- display_id
+- ad_id
+- clicked (1 if clicked, 0 otherwise)
 
-![whatsapp image 2017-04-28 at 11 48 48 pm](https://cloud.githubusercontent.com/assets/21116708/25552645/5adedaf0-2c6d-11e7-93e1-f4a5bce0bed6.jpeg)
+**clicks_test.csv** is the same as clicks_train.csv, except it does not have the clicked ad. This - is the file you should use to predict. Each display_id has only one clicked ad. Note that test set contains display_ids from the entire dataset timeframe. Additionally, the public/private sampling for the competition is uniformly random, not based on time. These sampling choices were intentional, in spite of the possibility that participants can look ahead in time.
+
+**sample_submission.csv** shows the correct submission format.
+
+**events.csv** provides information on the display_id context. It covers both the train and test set.
+
+- display_id
+- uuid
+- document_id
+- timestamp
+- platform
+- geo_location
+
+**promoted_content.csv** provides details on the ads.
+
+- ad_id
+- document_id
+- campaign_id
+- advertiser_id
+
+**documents_meta.csv** provides details on the documents.
+
+- document_id
+- source_id (the part of the site on which the document is displayed, e.g. edition.cnn.com)
+- publisher_id
+- publish_time
+
+**documents_topics.csv**, **documents_entities.csv**, and **documents_categories.csv** all provide information about the content in a document, as well as Outbrain's confidence in each respective relationship. For example, an entity_id can represent a person, organization, or location. The rows in documents_entities.csv give the confidence that the given entity was referred to in the document.
 
 
-* Below is a screenshot of rest API that will predict advertisement ids for an individual display id.
-
-![click probability](https://cloud.githubusercontent.com/assets/21116708/25552442/c4d45670-2c67-11e7-9f97-e2ccf68b36d7.JPG)
-
-* Below is the screenshot of rest API that will predict individual ad click probablity
-
-![whatsapp image 2017-04-28 at 11 51 04 pm](https://cloud.githubusercontent.com/assets/21116708/25552661/9fc97832-2c6d-11e7-8457-79779458a669.jpeg)
 
 
-# Exploratory Analysis
-
-### Analysis 1
+#  Installation
 <hr>
 
-![screen shot 2017-04-28 at 11 16 21 pm](https://cloud.githubusercontent.com/assets/21116708/25552472/c0150d2c-2c68-11e7-9c9e-53e411ab7090.png)
+- **Library For Windows**
+    ```
+    $ pip install [name] or
+    $ pip3 install [name]
+    ```
 
-#### Observations
-* Maximum percentage of clicks were made through mobile phones, followed by desktop and then tablets. Mainly because: 
+- **[Outbrain Click Prediction Data Sources](https://www.kaggle.com/c/outbrain-click-prediction/data) for Windows**
 
-* App Availability: the app is available that is available on desktop is now present on model too.
 
-* Convenience:  Games or social networking apps frequently serve as a way to pass the time while on the subway commuting home or in a cab or surfing net. This directly reflects the increase in uses of mobile devices    
 
-#### Analysis 2
+
+# License
 <hr>
 
-![clicks_by_hour_events_table](https://cloud.githubusercontent.com/assets/21116708/25552475/cb66b1c6-2c68-11e7-8aef-fd0a299863d3.png)
-
-#### Observations
-* We observed that the click frequency is very high between 10-15 hrs. Around 10-11 a.m. time people are usually on their commute to work, school etc. and pass their time surfing net. Around 1-3 p.m. is usually lunch time where people get time to surf internet and that’s the frequency is high.
-
-* The frequency in the bucket 15-20 is again when people are traveling back home and around dinner time when they have time to surf internet.
-
-### Analysis 3
-<hr>
-
-![screen shot 2017-04-26 at 10 22 26 am](https://cloud.githubusercontent.com/assets/21116708/25552522/f1240bce-2c69-11e7-8ee2-f8eeb3a00f78.png)
-
-#### Observations
-* The number of clicks increase from 9.am. and reaches highest at around 10 a.m. and remains high till 12p.m. and then gradually decreases till it hits 3.p.m. It again rises from 3p.m.
-
-
-### Analysis 4 
-<hr>
-
-![screen shot 2017-04-28 at 7 35 57 pm](https://cloud.githubusercontent.com/assets/21116708/25552510/9b2d6e18-2c69-11e7-9069-53b87e8784d4.png)
-
-#### Observations
-From the dashboard we can conclude that USA that the maximum number of view rate. The frequency of clicks gradually increases from 6 am and was high around 10 a.m. to 12 p.m.
-The click was highest on Day 0 which is June 14th. It is a US national holiday
-
-
-### Analysis 5
-<hr>
-
-![screen shot 2017-04-28 at 7 36 39 pm](https://cloud.githubusercontent.com/assets/21116708/25552511/a156f3e0-2c69-11e7-8027-8fe7b936a946.png)
-
-#### Observations
-* California state has the maximum number of views.
-* The maximum number of views were from mobile devices at around 11 a.m. 
-
-
+**Outbrain Click Prediction** is under GNU General Public License v3.0. See the [LICEENSE](LICENSE) file for more info.
