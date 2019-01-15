@@ -2,7 +2,9 @@
 <hr>
 
 **Author** : Hyuntaek Lim, luckyquit49@gmail.com
+
 Supervisor : Na, In Seop, ypencil@hanmail.net
+
 Starting Project : 2019.1.8
 
 
@@ -11,6 +13,7 @@ Starting Project : 2019.1.8
 <hr>
 
 Outbrain Click Prediction Overview : https://www.kaggle.com/c/outbrain-click-prediction
+
 Outbrain-Click-Predcition Github : https://github.com/bajajsweta/Outbrain-Click-Prediction
 
 
@@ -82,4 +85,4 @@ Outbrain-Click-Predcition Github : https://github.com/bajajsweta/Outbrain-Click-
 # License
 <hr>
 
-**Outbrain Click Prediction** is under GNU General Public License v3.0. See the [LICEENSE](LICENSE) file for more info.
+**Outbrain Click Prediction** is under GNU General Public License v3.0. See the [LICENSE](LICENSE) file for more info.
