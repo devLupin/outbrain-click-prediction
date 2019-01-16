@@ -3,6 +3,7 @@
 
 ✨ Can you predict which recommended content each user will click?
 
+
 **Author** : Hyuntaek Lim, luckyquit49@gmail.com
 
 Supervisor : Na, In Seop, ypencil@hanmail.net
@@ -78,7 +79,7 @@ Outbrain-Click-Predcition Github : https://github.com/bajajsweta/Outbrain-Click-
     pip install [lib_name] or
     pip3 install [lib_name]
     ```
-- **[Using Outbrain-Click-Prediction Algorithm](https://github.com/bajajsweta/Outbrain-Click-Prediction) for Windows**
+- Using **[Outbrain-Click-Prediction Algorithm](https://github.com/bajajsweta/Outbrain-Click-Prediction) for Windows**
     ```
     https://github.com/bajajsweta/Outbrain-Click-Prediction.git
     ```
