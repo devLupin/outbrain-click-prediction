@@ -1,7 +1,12 @@
 # Outbrain-Click-Prediction
 <hr>
 
+![Python](https://img.shields.io/badge/<Python>-<3.7>-<brightgreen>.svg)
+![Jupyter](https://img.shields.io/badge/Jupyter-v1.0.0-blue.svg)
+
+
 ✨ Can you predict which recommended content each user will click?
+
 
 
 **Author** : Hyuntaek Lim, luckyquit49@gmail.com
@@ -70,21 +75,50 @@ Outbrain-Click-Predcition Github : https://github.com/bajajsweta/Outbrain-Click-
 
 
 
+# Examples
+<hr>
+```python
+import numpy as np # linear algebra
+import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+import os
+import gc # We're gonna be clearing memory a lot
+import matplotlib.pyplot as plt
+import seaborn as sns
+%matplotlib inline
 
-#  Installation
+p = sns.color_palette()
+
+print('# File sizes')
+for f in os.listdir('./Desktop/openSW/input/'):
+    if 'zip' not in f:
+        print(f.ljust(30) + str(round(os.path.getsize('./Desktop/openSW/input/' + f) / 1000000, 2)) + 'MB')
+```
+
+
+
+#  Requirements
 <hr>
 
-- **Python library For Windows**
+- **[Python 3.7](https://www.python.org/)**
+
+- **Python library**
     ```
     pip install [lib_name] or
     pip3 install [lib_name]
     ```
-- Using **[Outbrain-Click-Prediction Algorithm](https://github.com/bajajsweta/Outbrain-Click-Prediction) for Windows**
+
+- **[Jupyter Notebook](https://jupyter.org/)**
+    ```
+    pip install jupyter or 
+    pip3 install jupyter
+    ```
+
+- **[Outbrain-Click-Prediction Algorithm](https://github.com/bajajsweta/Outbrain-Click-Prediction)**
     ```
     https://github.com/bajajsweta/Outbrain-Click-Prediction.git
     ```
 
-- **[Outbrain Click Prediction Data Sources](https://www.kaggle.com/c/outbrain-click-prediction/data) for Windows**
+- **[Outbrain Click Prediction Data Sources](https://www.kaggle.com/c/outbrain-click-prediction/data)** for Windows
     ```
     kaggle competitions download -c outbrain-click-prediction
     ```
