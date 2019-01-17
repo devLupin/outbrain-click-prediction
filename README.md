@@ -1,7 +1,7 @@
 # Outbrain-Click-Prediction
 <hr>
 
-![Python](https://img.shields.io/badge/<Python>-<3.7>-<brightgreen>.svg)
+![Python](https://img.shields.io/badge/Python-3.7-brightgreen.svg)
 ![Jupyter](https://img.shields.io/badge/Jupyter-v1.0.0-blue.svg)
 
 
