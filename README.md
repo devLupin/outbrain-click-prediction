@@ -126,6 +126,17 @@ for f in os.listdir('./Desktop/openSW/input/'):
 
 
 
+# Reference
+<hr>
+
+- **[Stack Overflow](https://stackoverflow.com/)**
+
+- **[Kaggle Kernels]**
+
+- **[Github Open source]**
+
+
+
 
 # License
 <hr>
