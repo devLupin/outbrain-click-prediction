@@ -131,9 +131,9 @@ for f in os.listdir('./Desktop/openSW/input/'):
 
 - **[Stack Overflow](https://stackoverflow.com/)**
 
-- **[Kaggle Kernels]**
+- **Kaggle Kernels**
 
-- **[Github Open source]**
+- **Github Open source**
 
 
 
